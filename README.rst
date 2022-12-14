@@ -18,7 +18,7 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A CircuitPython wrapper class to add list slice capability to a displayiio.Palette object while preserving transparency.
+A CircuitPython wrapper class to add list slice capability to a displayio.Palette object while preserving transparency.
 
 
 Dependencies
@@ -59,8 +59,6 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
 
 Documentation
 =============
