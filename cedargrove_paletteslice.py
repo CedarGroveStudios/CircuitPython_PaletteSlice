@@ -79,11 +79,13 @@ class PaletteSlice:
     def __delitem__(self, key):
         """Delete a slice from the primary class displayio.Palette.
         param slice key: The target slice object to delete from the new color palette."""
+        # pylint: disable = (unnecessary-pass)
         pass
 
     def __contains__(self, item):
         """Determine if the primary class displayio.Palette contains the item.
         param ? item: The item to find."""
+        # pylint: disable = (unnecessary-pass)
         pass
 
     @property
@@ -100,6 +102,7 @@ class PaletteSlice:
         """Append a color, transparency tuple to the primary class palette.
         param tuple entry: The color, transparency tuple to be added to the end of
         the primary class palette."""
+        # pylint: disable = (unnecessary-pass)
         pass
 
     """TO-DO: consider adding other list functions/attributes: clear, copy, count, extend,
@@ -116,4 +119,3 @@ class PaletteSlice:
             if transparency:
                 # Set new_palette color index transparency
                 self._new_palette.make_transparent(idx)
-        return

@@ -1,7 +1,18 @@
-import board
+# SPDX-FileCopyrightText: Copyright (c) 2022 JG for Cedar Grove Maker Studios
+# SPDX-License-Identifier: MIT
+"""
+`gradient_shape`
+================================================================================
+A test of gradient color fill in a vectorio shape.
+
+* Author(s): JG
+"""
+
 import time
-from vectorio import Rectangle, Circle
-from adafruit_display_shapes.line import Line
+import board
+
+# from vectorio import Rectangle, Circle
+# from adafruit_display_shapes.line import Line
 from adafruit_display_shapes.circle import Circle
 import displayio
 from cedargrove_rgb_spectrumtools.n_color import Spectrum

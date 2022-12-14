@@ -1,8 +1,17 @@
-# palette slice test
-import terminalio
-import board
+# SPDX-FileCopyrightText: Copyright (c) 2022 JG for Cedar Grove Maker Studios
+# SPDX-License-Identifier: MIT
+"""
+`paletteslice_simpletest`
+================================================================================
+A test of displayio.Palette slicing.
+
+* Author(s): JG
+"""
+
 import time
 import random
+import terminalio
+import board
 import displayio
 import adafruit_imageload
 from adafruit_display_text.label import Label
@@ -14,8 +23,8 @@ BKG_IMAGE_FILE = "jp_hohimer.bmp"
 def print_list(new_list):
     print("print_list object:", new_list)
     print("print_list object length:", len(new_list))
-    for i in range(len(new_list)):
-        print(i, hex(new_list[i]))
+    for i, color in enumerate(new_list):
+        print(i, hex(color))
 
 
 # Define the display and primary display group
@@ -77,4 +86,3 @@ while True:
 print("\nfin\n")
 while True:
     time.sleep(0.1)
-    pass
