@@ -64,7 +64,7 @@ while True:
 
     _ = pal_sliceable[start:stop:step]
 
-    #print_list(pal_sliceable.palette)
+    # print_list(pal_sliceable.palette)
 
     if len(pal_sliceable.palette) != 0:
         slice_label.text = (
@@ -77,4 +77,3 @@ while True:
 print("\nfin\n")
 while True:
     time.sleep(0.1)
-    
