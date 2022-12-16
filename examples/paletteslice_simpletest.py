@@ -9,8 +9,8 @@ A test of the PaletteSlice wrapper class.
 """
 
 import time
-import board
 import random
+import board
 import terminalio
 import displayio
 import adafruit_imageload
