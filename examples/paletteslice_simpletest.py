@@ -1,17 +1,8 @@
-# SPDX-FileCopyrightText: Copyright (c) 2022 JG for Cedar Grove Maker Studios
-# SPDX-License-Identifier: MIT
-"""
-`paletteslice_simpletest`
-================================================================================
-A test of displayio.Palette slicing.
-
-* Author(s): JG
-"""
-
-import time
-import random
+# palette slice test
 import terminalio
 import board
+import time
+import random
 import displayio
 import adafruit_imageload
 from adafruit_display_text.label import Label
@@ -23,8 +14,8 @@ BKG_IMAGE_FILE = "jp_hohimer.bmp"
 def print_list(new_list):
     print("print_list object:", new_list)
     print("print_list object length:", len(new_list))
-    for i, color in enumerate(new_list):
-        print(i, hex(color))
+    for i in range(len(new_list)):
+        print(f"index {i:03.0f} color {new_list[i]:#08x}")
 
 
 # Define the display and primary display group
@@ -73,7 +64,7 @@ while True:
 
     _ = pal_sliceable[start:stop:step]
 
-    # print_list(pal_sliceable.palette)
+    #print_list(pal_sliceable.palette)
 
     if len(pal_sliceable.palette) != 0:
         slice_label.text = (
@@ -86,3 +77,4 @@ while True:
 print("\nfin\n")
 while True:
     time.sleep(0.1)
+    
