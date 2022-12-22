@@ -59,27 +59,27 @@ class PaletteSlice:
         # Move reference_list slice into working_list
         working_list = self._reference_list[key]
         self._create_new_palette(working_list)
-        return self._new_palette
+        #return self._new_palette
 
-    def __setitem__(self, key, new_color):
+    def __setitem__(self, key, value):
         """Replace or add new color palette to a sliced new_palette.
         param slice key: The target slice object for creating new_palette.
-        param displayio.Palette new_color: The palette of new colors."""
+        param displayio.Palette value: The palette of new colors."""
 
         # Extract color and transparency from new_color palette and create working_list
         working_list = []
-        for idx, color in enumerate(new_color):
-            working_list.append((color, new_color.is_transparent(idx)))
+        for idx, color in enumerate(value):
+            working_list.append((color, value.is_transparent(idx)))
 
         # Move working_list into the specified reference_list slice
         self._reference_list[key] = working_list
         self._create_new_palette(self._reference_list)
-        return self._new_palette
+        #return self._new_palette
 
     def __delitem__(self, key):
         """Delete a slice from the primary class displayio.Palette. Permanently removes
         the slice from reference_list and creates a new_palette. Usage is
-        del PaletteSlice[key]. UNTESTED
+        del PaletteSlice[key]. UNTESTED -- ONLY WORKS IN REPL
         param slice key: The target slice object to delete from the new color palette."""
         """self._reference_list = del self._reference_list[key]
         self._create_new_palette(self._reference_list)
@@ -87,9 +87,10 @@ class PaletteSlice:
         # pylint: disable = (unnecessary-pass)
         pass
 
-    def __contains__(self, item):
-        """Determine if the primary class displayio.Palette contains the item.
-        param ? item: The item to find."""
+    def __contains__(self, obj):
+        """Determine if the primary class displayio.Palette contains the object.
+        Useage is obj in PaletteSlice. Returns True or False.
+        param ? obj: The object to find."""
         # pylint: disable = (unnecessary-pass)
         pass
 
@@ -111,7 +112,7 @@ class PaletteSlice:
         the primary class palette."""
         self._reference_list.append(element)
         self._create_new_palette(self._reference_list)
-        return self._new_palette
+        #return self._new_palette
 
     def count(self, element):
         """Counts the occurrences of the color, transparency tuple in the reference_list.
@@ -128,7 +129,7 @@ class PaletteSlice:
         the primary class palette."""
         self._reference_list.extend(add_list)
         self._create_new_palette(self._reference_list)
-        return self._new_palette
+        #return self._new_palette
 
     def insert(self, key, element):
         """Insert a color, transparency tuple to the primary class palette at slice
@@ -139,7 +140,7 @@ class PaletteSlice:
         the primary class palette."""
         self._reference_list.insert(key, element)
         self._create_new_palette(self._reference_list)
-        return self._new_palette
+        #return self._new_palette
 
     """TO-DO: consider adding other list functions/attributes:
     index(), pop(), remove(), reverse(), sort(), min(), max(), all(), any()"""
