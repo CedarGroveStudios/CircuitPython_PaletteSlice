@@ -32,6 +32,7 @@ class PaletteSlice:
     def __init__(self, source_palette):
         """Instantiate the palette slice class. Creates a reference list and a
         displayio.Palette object with source palette color values. Transparency is preserved.
+
         param displayio.Palette source_palette: The source displayio palette object."""
         self._source_palette = source_palette
 
@@ -54,15 +55,17 @@ class PaletteSlice:
 
     def __getitem__(self, key):
         """Create a new_palette slice from reference_list.
+
         param slice key: The slice object specifying the new palette."""
 
         # Move reference_list slice into working_list
         working_list = self._reference_list[key]
         self._create_new_palette(working_list)
-        #return self._new_palette
+        return self._new_palette
 
     def __setitem__(self, key, value):
         """Replace or add new color palette to a sliced new_palette.
+
         param slice key: The target slice object for creating new_palette.
         param displayio.Palette value: The palette of new colors."""
 
@@ -74,25 +77,33 @@ class PaletteSlice:
         # Move working_list into the specified reference_list slice
         self._reference_list[key] = working_list
         self._create_new_palette(self._reference_list)
-        #return self._new_palette
 
     def __delitem__(self, key):
-        """Delete a slice from the primary class displayio.Palette. Permanently removes
-        the slice from reference_list and creates a new_palette. Usage is
-        del PaletteSlice[key]. UNTESTED -- ONLY WORKS IN REPL
+        """UNTESTED:
+        Delete a slice from the primary class displayio.Palette. Permanently removes
+        the slice from reference_list and creates a new_palette.
+        Usage is del PaletteSlice[key]. ONLY WORKS IN REPL
+
         param slice key: The target slice object to delete from the new color palette."""
         """self._reference_list = del self._reference_list[key]
-        self._create_new_palette(self._reference_list)
-        return self._new_palette"""
+        self._create_new_palette(self._reference_list)"""
         # pylint: disable = (unnecessary-pass)
         pass
 
     def __contains__(self, obj):
-        """Determine if the primary class displayio.Palette contains the object.
-        Useage is obj in PaletteSlice. Returns True or False.
-        param ? obj: The object to find."""
-        # pylint: disable = (unnecessary-pass)
-        pass
+        """Determine if reference_list contains the object. Returns True or False.
+        Usage is obj in PaletteSlice.palette. Currently works only with singlton objects,
+        not tuples.
+        TO-DO: determine if the search should be through the list or the palette. Also,
+        should the obj be the tuple or either value in the tuple?
+
+        param * obj: The object to find."""
+        for _, item in enumerate(self._reference_list):
+            # Split the tuple if needed
+            for _, element in enumerate(item):
+                if element == obj:
+                    return True
+        return False
 
     @property
     def palette(self):
@@ -104,46 +115,67 @@ class PaletteSlice:
         """A list of color, transparency tuples from the primary class palette."""
         return self._reference_list
 
-    def append(self, element):
-        """Append a color, transparency tuple to the primary class palette. Permanently
-        changes reference_list and creates a new_palette. Usage is
-        PaletteSlice.append(element). UNTESTED
-        param tuple element: The color, transparency tuple to be added to the end of
+    def append(self, color):
+        """Append a color value to the primary class palette.
+        Permanently changes reference_list and creates a new_palette.
+        Usage is PaletteSlice.append(color).
+
+        param tuple color: The color value tuple to be added to the end of
         the primary class palette."""
-        self._reference_list.append(element)
+        self._reference_list.append((color, False))
         self._create_new_palette(self._reference_list)
-        #return self._new_palette
 
     def count(self, element):
-        """Counts the occurrences of the color, transparency tuple in the reference_list.
-        Usage is PaletteSlice.count(element). UNTESTED
+        """UNTESTED:
+        Counts the occurrences of the color, transparency tuple in the
+        reference_list.
+        Usage is PaletteSlice.count(element).
+
         param tuple element: The color, transparency tuple to be added to the end of
         the primary class palette."""
         return self._reference_list.count(element)
 
     def extend(self, add_list):
-        """Append a list of color, transparency tuples to the primary class palette.
-        Permanently changes reference_list and creates a new_palette. Usage is
-        PaletteSlice.extend(add_list). UNTESTED
-        param list add_list: The list of color, transparency tuples to be added to the end of
-        the primary class palette."""
+        """UNTESTED:
+        Append a list of color, transparency tuples to the primary class
+        palette. Permanently changes reference_list and creates a new_palette.
+        Usage is PaletteSlice.extend(add_list).
+
+        param list add_list: The list of color, transparency tuples to be added to the
+        end of the primary class palette."""
         self._reference_list.extend(add_list)
         self._create_new_palette(self._reference_list)
-        #return self._new_palette
 
     def insert(self, key, element):
-        """Insert a color, transparency tuple to the primary class palette at slice
-        object key. Permanently changes reference_list and creates a new_palette.
-        Usage is PaletteSlice.insert(key, element). UNTESTED
+        """UNTESTED:
+        Insert a color, transparency tuple to the primary class palette at
+        slice object key. Permanently changes reference_list and creates a new_palette.
+        Usage is PaletteSlice.insert(key, element).
+
         param slice key: The target slice object to insert into the new color palette.
         param tuple element: The color, transparency tuple to be inserted into
         the primary class palette."""
         self._reference_list.insert(key, element)
         self._create_new_palette(self._reference_list)
-        #return self._new_palette
 
     """TO-DO: consider adding other list functions/attributes:
     index(), pop(), remove(), reverse(), sort(), min(), max(), all(), any()"""
+
+    def make_transparent(self, index):
+        """Set a palette index to transparency.
+        Usage:
+
+        param int index: The palette color index to be set."""
+        # pylint: disable = (unnecessary-pass)
+        pass
+
+    def make_opaque(self, index):
+        """Set a palette index to opaque.
+        Usage:
+
+        param int index: The palette color index to be set."""
+        # pylint: disable = (unnecessary-pass)
+        pass
 
     def _create_new_palette(self, source_list):
         """Create new_palette from a source list composed of color, transparency tuples."""
