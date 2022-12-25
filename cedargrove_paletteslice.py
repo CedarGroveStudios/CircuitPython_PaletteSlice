@@ -105,6 +105,9 @@ class PaletteSlice:
                     return True
         return False
 
+    def __len__(self):
+        return len(self._new_palette)
+
     @property
     def palette(self):
         """The primary class palette (adjusted displayio.Palette object)."""

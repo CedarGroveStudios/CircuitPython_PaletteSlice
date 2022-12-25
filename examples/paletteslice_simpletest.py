@@ -32,16 +32,16 @@ display = board.DISPLAY
 display.brightness = 0.05
 primary_group = displayio.Group()
 
-# Display the background image and source color palette
-bkg_bitmap, bkg_palette_source = adafruit_imageload.load(
+# Display the test image and source color palette
+test_bitmap, test_palette_source = adafruit_imageload.load(
     BKG_IMAGE_FILE, bitmap=displayio.Bitmap, palette=displayio.Palette
 )
-# make a sliceable copy of the reference palette
-pal_sliceable = PaletteSlice(bkg_palette_source)
+# Instantiate a sliceable copy of the reference palette
+pal_sliceable = PaletteSlice(test_palette_source)
 
-# test of append()
+# Test of append()
 print("\n" + ("=" * 15))
-print("test of append()")
+print("TEST append()")
 test = 0xF0F0F0
 (last_color, last_transparency) = pal_sliceable.reference_list[-1]
 length = len(pal_sliceable.palette)
@@ -57,19 +57,20 @@ print(
     f"length  AFTER append: {length} last item: {last_color:#08x} {last_transparency}"
 )
 
-# test of __contains__()
+# Test of __contains__
 print("\n" + ("=" * 15))
-print("test of __contains__")
+print("TEST __contains__")
 test = 0
 if test in pal_sliceable:
     print(f"< {test} > in pal_sliceable (True)")
 else:
     print(f"< {test} > NOT in pal_sliceable (False)")
 
-# place the background image into a tile and append to the primary display group
-bkg_tile = displayio.TileGrid(bkg_bitmap, pixel_shader=bkg_palette_source)
-primary_group.append(bkg_tile)
+# Place the test image into a tile and append to the primary display group
+test_tile = displayio.TileGrid(test_bitmap, pixel_shader=test_palette_source)
+primary_group.append(test_tile)
 
+# Define on-screen label for slice object and palette length
 slice_label = Label(
     terminalio.FONT, text="PALETTE SLICE TESTER: __getitem__", color=0xFFFFFF
 )
@@ -77,24 +78,24 @@ slice_label.anchor_point = (0, 0.5)
 slice_label.anchored_position = (10, 225)
 primary_group.append(slice_label)
 
+# Show the test image and label
 display.show(primary_group)
 time.sleep(2)
 
 while True:
+    # Create a random slice object; prohibit step == 0
     start = random.randrange(0, 255)
     stop = random.randrange(0, 255)
     step = random.randrange(-5, 6)
     if step == 0:
         step = 1
 
-    _ = pal_sliceable[start:stop:step]
+    # Slice the palette and use for bkg_tile
+    test_tile.pixel_shader = pal_sliceable[start:stop:step]
 
     if len(pal_sliceable.palette) != 0:
-        slice_label.text = (
-            f"[{start}:{stop}:{step}]  \nLENGTH={len(pal_sliceable.palette)}"
-        )
-
-        bkg_tile.pixel_shader = pal_sliceable.palette
+        # Display slice object and pause to view
+        slice_label.text = f"[{start}:{stop}:{step}]  \nLENGTH={len(pal_sliceable)}"
         time.sleep(0.75)
 
 print("\nfin\n")
