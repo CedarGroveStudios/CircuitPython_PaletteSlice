@@ -54,7 +54,7 @@ class PaletteSlice:
                 self._new_palette.make_transparent(idx)
 
     def __getitem__(self, key):
-        """Create a new_palette slice from reference_list.
+        """Returns a new_palette slice from reference_list.
 
         param slice key: The slice object specifying the new palette."""
 
@@ -90,19 +90,15 @@ class PaletteSlice:
         # pylint: disable = (unnecessary-pass)
         pass
 
-    def __contains__(self, obj):
-        """Determine if reference_list contains the singleton color object
-        (not a color, transparency tuple). Returns True or False.
-        Usage is obj in PaletteSlice.palette.
-        TO-DO: determine if the search should be through the list or the palette.
-        Also, the obj should only be the color value.
+    def __contains__(self, color):
+        """Determine if reference_list contains the singleton color
+        (not a tuple). Returns True or False.
+        Usage is color in PaletteSlice.palette.
 
-        param * obj: The object to find."""
-        for _, item in enumerate(self._reference_list):
-            # Split the tuple if needed
-            for _, element in enumerate(item):
-                if element == obj:
-                    return True
+        param int color: The color to find."""
+        for _, element in enumerate(self._reference_list):
+            if element[0] == color:
+                return True
         return False
 
     def __len__(self):
@@ -128,15 +124,16 @@ class PaletteSlice:
         self._reference_list.append((color, False))
         self._create_new_palette(self._reference_list)
 
-    def count(self, element):
-        """UNTESTED:
-        Counts the occurrences of the color, transparency tuple in the
-        reference_list.
-        Usage is PaletteSlice.count(element).
+    def count(self, color):
+        """Counts the occurrences of the color value in the reference_list.
+        Usage is PaletteSlice.count(color).
 
-        param tuple element: The color, transparency tuple to be added to the end of
-        the primary class palette."""
-        return self._reference_list.count(element)
+        param int color: The color value to count."""
+        counter = 0
+        for _, (element, _) in enumerate(self._reference_list):
+            if element == color:
+                counter += 1
+        return counter
 
     def extend(self, add_list):
         """UNTESTED:
@@ -149,26 +146,58 @@ class PaletteSlice:
         self._reference_list.extend(add_list)
         self._create_new_palette(self._reference_list)
 
-    def insert(self, key, element):
+    def insert(self, key, color):
         """UNTESTED:
-        Insert a color, transparency tuple to the primary class palette at
+        Insert an opaque color value into the primary class palette at
         slice object key. Permanently changes reference_list and creates a new_palette.
-        Usage is PaletteSlice.insert(key, element).
+        Usage is PaletteSlice.insert(key, color).
 
         param slice key: The target slice object to insert into the new color palette.
         param tuple element: The color, transparency tuple to be inserted into
         the primary class palette."""
-        self._reference_list.insert(key, element)
+        self._reference_list.insert(key, (color, False))
         self._create_new_palette(self._reference_list)
 
+    def pop(self, key):
+        """Remove a color, transparency tuple from the primary class palette at
+        slice object key. Permanently changes reference_list and creates a new_palette.
+        Returns the removed color value from the reference_list tuple.
+        Usage is PaletteSlice.pop(key).
+
+        param slice key: The target slice object to insert into the new color palette."""
+        color, _ = self._reference_list[key]
+        self._reference_list.pop(key)
+        self._create_new_palette(self._reference_list)
+        return color
+
+    def index(self, color, start=None, stop=None):
+        """Returns the smallest index where the color matches the element value or
+        None if not found. start and stop optionally specify the starting and
+        ending index for the search.
+        Usage is PaletteSlice.index(color).
+
+        param integer color: The color value for the search.
+        param integer start: The starting index value. Defaults to None, the start of the list.
+        param integer end: The ending index value. Defaults to None, the end of the list."""
+
+        if not start:
+            start = 0
+        if not stop:
+            stop = len(self._reference_list) - 1
+
+        for index, (element, _) in enumerate(self._reference_list):
+            if element == color:
+                return index
+        return None
+
     """TO-DO: consider adding other list functions/attributes:
-    index(), pop(), remove(), reverse(), sort(), min(), max(), all(), any()"""
+    remove(), reverse(), sort(), min(), max(), all(), any()"""
 
     def make_transparent(self, index):
         """Set a palette index to transparency.
         Usage:
 
-        param int index: The palette color index to be set."""
+        param int index: The palette color index to be made transparent."""
         # pylint: disable = (unnecessary-pass)
         pass
 
@@ -176,7 +205,7 @@ class PaletteSlice:
         """Set a palette index to opaque.
         Usage:
 
-        param int index: The palette color index to be set."""
+        param int index: The palette color index to be made opaque."""
         # pylint: disable = (unnecessary-pass)
         pass
 

@@ -46,7 +46,7 @@ test = 0xF0F0F0
 print(f"  value to insert: {test:#08x}")
 
 (last_color, last_transparency) = pal_sliceable.reference_list[-1]
-length = len(pal_sliceable.palette)
+length = len(pal_sliceable)
 print(
     f"length BEFORE append: {length} last item: {last_color:#08x} {last_transparency}"
 )
@@ -54,10 +54,36 @@ print(
 pal_sliceable.append(test)
 
 (last_color, last_transparency) = pal_sliceable.reference_list[-1]
-length = len(pal_sliceable.palette)
+length = len(pal_sliceable)
 print(
     f"length  AFTER append: {length} last item: {last_color:#08x} {last_transparency}"
 )
+
+# Test of count()
+print("\n" + ("=" * 15))
+print("TEST count()")
+test = 0xFFFFFF  # Color value for search
+print(f"  color value for search: {test:#08x}")
+
+print(f"number of occurences: {pal_sliceable.count(test)}")
+
+# Test of index()
+print("\n" + ("=" * 15))
+print("TEST index()")
+test = 0xFFFFF0  # Color value for search
+print(f"  color value for search: {test:#08x}")
+
+print(f"first index found: {pal_sliceable.index(test)}")
+
+# Test of pop()
+print("\n" + ("=" * 15))
+print("TEST pop()")
+test = -1  # Remove last item
+print(f"  index to pop: {test}")
+
+print(f"  length BEFORE pop: {len(pal_sliceable)}")
+print(f"value removed: {pal_sliceable.pop(test):#08x}")
+print(f"  length  AFTER pop: {len(pal_sliceable)}")
 
 # Test of __contains__
 print("\n" + ("=" * 15))
