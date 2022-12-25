@@ -91,11 +91,11 @@ class PaletteSlice:
         pass
 
     def __contains__(self, obj):
-        """Determine if reference_list contains the object. Returns True or False.
-        Usage is obj in PaletteSlice.palette. Currently works only with singlton objects,
-        not tuples.
-        TO-DO: determine if the search should be through the list or the palette. Also,
-        should the obj be the tuple or either value in the tuple?
+        """Determine if reference_list contains the singleton color object
+        (not a color, transparency tuple). Returns True or False.
+        Usage is obj in PaletteSlice.palette.
+        TO-DO: determine if the search should be through the list or the palette.
+        Also, the obj should only be the color value.
 
         param * obj: The object to find."""
         for _, item in enumerate(self._reference_list):

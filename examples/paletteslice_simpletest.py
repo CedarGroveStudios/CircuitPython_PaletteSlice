@@ -43,6 +43,8 @@ pal_sliceable = PaletteSlice(test_palette_source)
 print("\n" + ("=" * 15))
 print("TEST append()")
 test = 0xF0F0F0
+print(f"  value to insert: {test:#08x}")
+
 (last_color, last_transparency) = pal_sliceable.reference_list[-1]
 length = len(pal_sliceable.palette)
 print(
@@ -61,6 +63,8 @@ print(
 print("\n" + ("=" * 15))
 print("TEST __contains__")
 test = 0
+print(f"  value to find: {test}")
+
 if test in pal_sliceable:
     print(f"< {test} > in pal_sliceable (True)")
 else:
