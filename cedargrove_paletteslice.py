@@ -193,21 +193,30 @@ class PaletteSlice:
     """TO-DO: consider adding other list functions/attributes:
     remove(), reverse(), sort(), min(), max(), all(), any()"""
 
+    def is_transparent(self, index):
+        """Returns True if the palette index is transparent. Returns False if opaque.
+        Usage: PaletteSlice.is_transparend(index)
+
+        param int index: The palette color index to test."""
+        return self._reference_list[index][1]
+
     def make_transparent(self, index):
-        """Set a palette index to transparency.
-        Usage:
+        """Set a palette index to transparency. Permanently modifies reference_list
+        and new_palette.
+        Usage: PaletteSlice.make_opaque(index)
 
         param int index: The palette color index to be made transparent."""
-        # pylint: disable = (unnecessary-pass)
-        pass
+        self._reference_list[index] = (self._reference_list[index][0], True)
+        self._create_new_palette(self._reference_list)
 
     def make_opaque(self, index):
-        """Set a palette index to opaque.
-        Usage:
+        """Set a palette index to opaque. Permanently modifies reference_list
+        and new_palette.
+        Usage: PaletteSlice.make_opaque(index)
 
         param int index: The palette color index to be made opaque."""
-        # pylint: disable = (unnecessary-pass)
-        pass
+        self._reference_list[index] = (self._reference_list[index][0], False)
+        self._create_new_palette(self._reference_list)
 
     def _create_new_palette(self, source_list):
         """Create new_palette from a source list composed of color, transparency tuples."""

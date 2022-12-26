@@ -59,13 +59,24 @@ print(
     f"length  AFTER append: {length} last item: {last_color:#08x} {last_transparency}"
 )
 
+# Test of is_transparent(), make_transparent(), make_opaque()
+print("\n" + ("=" * 15))
+test = -1  # Index to test
+print("TEST is_transparent(), make_transparent(), make_opaque()")
+print(f"  index value for test: {test}")
+print(f"  is_transparent: {pal_sliceable.is_transparent(test)}")
+pal_sliceable.make_transparent(test)
+print(f"AFTER make_transparent -> is_transparent: {pal_sliceable.is_transparent(test)}")
+pal_sliceable.make_opaque(test)
+print(f"AFTER make_opaque      -> is_transparent: {pal_sliceable.is_transparent(test)}")
+
 # Test of count()
 print("\n" + ("=" * 15))
 print("TEST count()")
 test = 0xFFFFFF  # Color value for search
 print(f"  color value for search: {test:#08x}")
 
-print(f"number of occurences: {pal_sliceable.count(test)}")
+print(f"number of occurrences: {pal_sliceable.count(test)}")
 
 # Test of index()
 print("\n" + ("=" * 15))
