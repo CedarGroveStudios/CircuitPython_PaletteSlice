@@ -20,7 +20,10 @@ Introduction
 
 A CircuitPython wrapper class to add list slice capability to a displayio.Palette object while preserving transparency.
 
+This initial version will be used as a learning experience for class composition versus inheritance since neither the ``displayio.Palette`` or ``list`` classes can be inherited. The objective is to first create all the dunder and methods for the class so that a ``displayio.Palette`` object can be manipulated as a list while preserving the ``displayio.Palette`` type/attribute. The final version will likely just implement the ``__getitem__`` and ``__setitem__`` processes to allow slicing, trimming out all the other list methods.
+
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_design_brainstorm.png
+    :alt: Brainstorm Diagram
 
 Dependencies
 =============
