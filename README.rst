@@ -1,7 +1,8 @@
 Introduction
 ============
 
-
+CedarGroveStudios/CircuitPython_PaletteSlice
+--------------------------------------------
 
 
 .. image:: https://img.shields.io/discord/327254708534116352.svg
@@ -18,12 +19,43 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A CircuitPython wrapper class to add list slice capability to a ``displayio.Palette`` object while preserving transparency.
+A CircuitPython wrapper class to add list slice and extended slice capability to a ``displayio.Palette`` object while preserving transparency.
 
-This initial version will be used as a learning experience for class composition versus inheritance since neither the ``displayio.Palette`` or ``list`` classes can be inherited. The objective is to first create all the dunder and methods for the class so that a ``displayio.Palette`` object can be manipulated as a list while preserving the ``displayio.Palette`` type/attribute. The final version will likely only implement the minimum ``__getitem__`` and ``__setitem__`` processes to allow slicing.
+Two versions are available for testing. ``cedargrove_paletteslice.cedargrove_paletteslice_lite`` is a minimal version that only supports palette slicing and the traditional palette functions:
+
+* ``len(palette)``
+* ``.make_transparent(index)``
+* ``.make_opaque(index)``
+* ``.is_transparent(index)``
+
+The second version, ``cedargrove_paletteslice.cedargrove_paletteslice`` currently extends the functionality of the "lite" version with the functions:
+
+* ``__contains__(color)``
+* ``.append(color)``
+* ``.count(color)``
+* ``.index(color)``
+* ``.pop(key)``
+
+Under consideration for a future version are:
+
+* ``.entend(new_palette)``
+* ``.insert(key)``
+* ``.remove(color)``
+* ``.reverse()``
+* ``.sort(key, reverse)``
+
+and perhaps the extended functions of:
+
+* ``min(palette)``
+* ``max(palette)``
+
+CircuitPython classes such as PaletteSlice cannot inherit ``displayio.Palette`` or ``list`` attributes because of their specific core implementation. Therefore, PaletteSlice uses composition to appear to be a ``displayio.Palette`` object. The PaletteSlice project began as a learning experience for the author but is also became a proof-of-concept for testing the usefulness of list slicing for ``displayio.Palette`` objects. Hopefully the project will encourage list slice and extended slice capabilities be added to ``displayio.Palette`` in the CircuitPython core.
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_design_brainstorm.png
     :alt: Brainstorm Diagram
+    :width: 600pt
+
+PaletteSlide Design Considerations
 
 Dependencies
 =============
@@ -63,6 +95,7 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
+``paletteslice_simpletest.py`` and ``paletteslice_simpletest_lite.py`` are contained in the ``examples`` folder.
 
 Documentation
 =============
