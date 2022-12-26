@@ -20,6 +20,7 @@ Introduction
 
 A CircuitPython wrapper class to add list slice capability to a displayio.Palette object while preserving transparency.
 
+.. image:: https//CedarGroveStudios/CircuitPython_PaletteSlice/media/PaletteSlice_design_brainstorm.png
 
 Dependencies
 =============
