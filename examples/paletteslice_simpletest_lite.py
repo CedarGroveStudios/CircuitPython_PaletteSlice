@@ -15,7 +15,7 @@ import terminalio
 import displayio
 import adafruit_imageload
 from adafruit_display_text.label import Label
-from cedargrove_paletteslice import PaletteSlice
+from cedargrove_paletteslice.cedargrove_paletteslice_lite import PaletteSlice
 
 BKG_IMAGE_FILE = "jp_hohimer.bmp"
 
