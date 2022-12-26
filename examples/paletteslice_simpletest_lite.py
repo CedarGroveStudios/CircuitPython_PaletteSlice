@@ -60,7 +60,6 @@ get_palette = pal_sliceable[start:stop:step]
 print_palette(get_palette)
 
 # Test of __set__
-# Test of __get__
 print("\n" + ("=" * 15))
 print("TEST __set__()")
 start = 1  # Slice start

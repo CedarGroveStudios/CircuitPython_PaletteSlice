@@ -48,6 +48,26 @@ test_bitmap, test_palette_source = adafruit_imageload.load(
 # Instantiate a sliceable copy of the reference palette
 pal_sliceable = PaletteSlice(test_palette_source)
 
+# Test of __get__
+print("\n" + ("=" * 15))
+print("TEST __get__()")
+start = 0  # Slice start
+stop = 5  # Slice stop
+step = 1  # Slice step
+print(f"  slice object: [{start}:{stop}:{step}]")
+get_palette = pal_sliceable[start:stop:step]
+print_palette(get_palette)
+
+# Test of __set__
+print("\n" + ("=" * 15))
+print("TEST __set__()")
+start = 1  # Slice start
+stop = 6  # Slice stop
+step = 1  # Slice step
+print(f"  slice object: [{start}:{stop}:{step}]")
+pal_sliceable[start:stop:step] = get_palette
+print_palette(pal_sliceable[0:8])
+
 # Test of append()
 print("\n" + ("=" * 15))
 print("TEST append()")
