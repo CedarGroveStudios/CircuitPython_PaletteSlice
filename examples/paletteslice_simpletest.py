@@ -27,6 +27,15 @@ def print_list(new_list):
         print(f"index: {i:03.0f} color: {color:#08x} transparency: {transparency}")
 
 
+def print_palette(new_palette):
+    print("print_palette object:", new_palette)
+    print("print_palette object length:", len(new_palette))
+    for i, color in enumerate(new_palette):
+        print(
+            f"index: {i:03.0f} color: {color:#08x} transparency: {new_palette.is_transparent(i)}"
+        )
+
+
 # Define the display and primary display group
 display = board.DISPLAY
 display.brightness = 0.05

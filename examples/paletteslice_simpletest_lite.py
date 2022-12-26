@@ -27,6 +27,15 @@ def print_list(new_list):
         print(f"index: {i:03.0f} color: {color:#08x} transparency: {transparency}")
 
 
+def print_palette(new_palette):
+    print("print_palette object:", new_palette)
+    print("print_palette object length:", len(new_palette))
+    for i, color in enumerate(new_palette):
+        print(
+            f"index: {i:03.0f} color: {color:#08x} transparency: {new_palette.is_transparent(i)}"
+        )
+
+
 # Define the display and primary display group
 display = board.DISPLAY
 display.brightness = 0.05
@@ -36,12 +45,30 @@ primary_group = displayio.Group()
 test_bitmap, test_palette_source = adafruit_imageload.load(
     BKG_IMAGE_FILE, bitmap=displayio.Bitmap, palette=displayio.Palette
 )
+
 # Instantiate a sliceable copy of the reference palette
 pal_sliceable = PaletteSlice(test_palette_source)
 
 # Test of __get__
+print("\n" + ("=" * 15))
+print("TEST __get__()")
+start = 0  # Slice start
+stop = 5  # Slice stop
+step = 1  # Slice step
+print(f"  slice object: [{start}:{stop}:{step}]")
+get_palette = pal_sliceable[start:stop:step]
+print_palette(get_palette)
 
 # Test of __set__
+# Test of __get__
+print("\n" + ("=" * 15))
+print("TEST __set__()")
+start = 1  # Slice start
+stop = 6  # Slice stop
+step = 1  # Slice step
+print(f"  slice object: [{start}:{stop}:{step}]")
+pal_sliceable[start:stop:step] = get_palette
+print_palette(pal_sliceable[0:8])
 
 # Place the test image into a tile and append to the primary display group
 test_tile = displayio.TileGrid(test_bitmap, pixel_shader=test_palette_source)
