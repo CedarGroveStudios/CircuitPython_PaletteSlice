@@ -13,6 +13,7 @@ import random
 import board
 import terminalio
 import displayio
+from ulab import numpy as np
 import adafruit_imageload
 from adafruit_display_text.label import Label
 from cedargrove_paletteslice.cedargrove_paletteslice import PaletteSlice
@@ -35,6 +36,19 @@ def print_palette(new_palette):
             f"index: {i:03.0f} color: {color:#08x} transparency: {new_palette.is_transparent(i)}"
         )
 
+
+# Prepare a test narray for the ulab narray test
+# Create a ulab test array of 32 colors
+ulab_narray = np.zeros(32)
+for idx in range(32):
+    ulab_narray[idx] = int(idx * 255 * 255) + 0x808080
+
+# Instantiate a sliceable palette object from test_palette
+test_palette = displayio.Palette(32)
+ulab_test_palette = PaletteSlice(test_palette)
+
+# "Broadside" copy the ulab narray object into the sliceable palette
+ulab_test_palette[:] = ulab_narray[:]
 
 # Define the display and primary display group
 display = board.DISPLAY
@@ -150,6 +164,11 @@ primary_group.append(slice_label)
 
 # Show the test image and label
 display.show(primary_group)
+print("TEST of default image")
+time.sleep(2)
+
+print("TEST of ulab narray -generated palette")
+test_tile.pixel_shader = ulab_test_palette[:]
 time.sleep(2)
 
 while True:

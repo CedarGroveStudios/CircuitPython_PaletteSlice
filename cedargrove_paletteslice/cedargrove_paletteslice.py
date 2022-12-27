@@ -64,15 +64,21 @@ class PaletteSlice:
         return self._new_palette
 
     def __setitem__(self, key, value):
-        """Replace or add new color palette to a sliced new_palette.
+        """Replace or add new color palette, list, or narray to a sliced new_palette.
 
         param slice key: The target slice object for creating new_palette.
-        param displayio.Palette value: The palette of new colors."""
+        param Union(displayio.Palette, list, narray) value: The palette of new colors."""
 
         # Extract color and transparency from new_color palette and create working_list
         working_list = []
+        list_flag = isinstance(value[0], (float, int))
         for idx, color in enumerate(value):
-            working_list.append((color, value.is_transparent(idx)))
+            if list_flag:
+                # value is an array or list
+                working_list.append((int(color), False))
+            else:
+                # value is likely a palette
+                working_list.append((color, value.is_transparent(idx)))
 
         # Move working_list into the specified reference_list slice
         self._reference_list[key] = working_list
