@@ -18,7 +18,7 @@ import adafruit_imageload
 from adafruit_display_text.label import Label
 from cedargrove_paletteslice.cedargrove_paletteslice import PaletteSlice
 
-BKG_IMAGE_FILE = "jp_hohimer.bmp"
+BKG_IMAGE_FILE = "orchid.bmp"
 
 
 def print_list(new_list):
@@ -36,19 +36,6 @@ def print_palette(new_palette):
             f"index: {i:03.0f} color: {color:#08x} transparency: {new_palette.is_transparent(i)}"
         )
 
-
-# Prepare a test narray for the ulab narray test
-# Create a ulab test array of 32 colors
-ulab_narray = np.zeros(32)
-for idx in range(32):
-    ulab_narray[idx] = int(idx * 255 * 255) + 0x808080
-
-# Instantiate a sliceable palette object from test_palette
-test_palette = displayio.Palette(32)
-ulab_test_palette = PaletteSlice(test_palette)
-
-# "Broadside" copy the ulab narray object into the sliceable palette
-ulab_test_palette[:] = ulab_narray[:]
 
 # Define the display and primary display group
 display = board.DISPLAY
@@ -168,6 +155,19 @@ print("TEST of default image")
 time.sleep(2)
 
 print("TEST of ulab narray -generated palette")
+# Prepare a test narray for the ulab narray test
+# Create a ulab test array
+NUMBER_OF_COLORS = 255
+ulab_narray = np.zeros(NUMBER_OF_COLORS)
+for idx in range(NUMBER_OF_COLORS):
+    ulab_narray[idx] = int(idx * 255 * 255)
+
+# Instantiate a sliceable palette object from test_palette
+test_palette = displayio.Palette(NUMBER_OF_COLORS)
+ulab_test_palette = PaletteSlice(test_palette)
+
+# "Broadside" copy the ulab narray object into the sliceable palette
+ulab_test_palette[:] = ulab_narray[:]
 test_tile.pixel_shader = ulab_test_palette[:]
 time.sleep(2)
 
