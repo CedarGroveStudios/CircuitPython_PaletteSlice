@@ -95,6 +95,14 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
+.. code-block:: python
+
+    from cedargrove_paletteslice import PaletteSlice
+    sliceable_palette = PaletteSlice(source_palette)
+    
+    # Create a new palette from the sliceable palette
+    new_sliced_palette = sliceable_palette[0:124:2]
+
 ``paletteslice_simpletest.py`` and ``paletteslice_simpletest_lite.py`` are contained in the ``examples`` folder.
 
 Documentation
