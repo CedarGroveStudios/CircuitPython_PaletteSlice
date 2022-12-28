@@ -3,7 +3,7 @@
 """
 `paletteslice_simpletest`
 ================================================================================
-A test of the PaletteSlice (lite) wrapper class.
+A test of the PaletteSlice wrapper class.
 
 * Author(s): JG
 """
@@ -16,7 +16,7 @@ import displayio
 from ulab import numpy as np
 import adafruit_imageload
 from adafruit_display_text.label import Label
-from cedargrove_paletteslice.cedargrove_paletteslice_lite import PaletteSlice
+from cedargrove_paletteslice.paletteslice import PaletteSlice
 
 BKG_IMAGE_FILE = "orchid.bmp"
 
