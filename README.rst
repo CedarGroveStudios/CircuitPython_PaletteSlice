@@ -21,14 +21,14 @@ CedarGroveStudios/CircuitPython_PaletteSlice
 
 A CircuitPython wrapper class to add list slice and extended slice capability to a ``displayio.Palette`` object while preserving transparency.
 
-Two versions are available for testing. ``cedargrove_paletteslice.cedargrove_paletteslice_lite`` is a minimal version that only supports palette slicing and the traditional palette functions:
+Two versions are available for testing. ``cedargrove_paletteslice.paletteslice`` is a minimal version that only supports palette slicing and the traditional palette functions:
 
 * ``len(palette)``
 * ``.make_transparent(index)``
 * ``.make_opaque(index)``
 * ``.is_transparent(index)``
 
-The second version, ``cedargrove_paletteslice.cedargrove_paletteslice`` currently extends the functionality of the "lite" version with the functions:
+The second version, ``cedargrove_paletteslice.paletteslice_acme`` currently extends the functionality of the minimal version with the additional functions:
 
 * ``__contains__(color)``
 * ``.append(color)``
@@ -36,7 +36,7 @@ The second version, ``cedargrove_paletteslice.cedargrove_paletteslice`` currentl
 * ``.index(color)``
 * ``.pop(key)``
 
-Under consideration for a future version are:
+Under consideration for a future "acme" version are:
 
 * ``.entend(new_palette)``
 * ``.insert(key)``
@@ -97,13 +97,13 @@ Usage Example
 
 .. code-block:: python
 
-    from cedargrove_paletteslice import PaletteSlice
+    from cedargrove_paletteslice.paletteslice import PaletteSlice
     sliceable_palette = PaletteSlice(source_palette)
 
     # Create a new palette from the sliceable palette
     new_sliced_palette = sliceable_palette[0:124:2]
 
-``paletteslice_simpletest.py`` and ``paletteslice_simpletest_lite.py`` are contained in the ``examples`` folder.
+``paletteslice_simpletest.py`` and ``paletteslice_simpletest_acme.py`` are contained in the ``examples`` folder.
 
 Documentation
 =============
