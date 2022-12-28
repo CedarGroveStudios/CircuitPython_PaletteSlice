@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2022 JG for Cedar Grove Maker Studios
 # SPDX-License-Identifier: MIT
 """
-`cedargrove_paletteslice_lite`
+`paletteslice_lite`
 ================================================================================
 PaletteSlice (lite) is a CircuitPython wrapper class to add list slice capability to a
 displayio.Palette object while preserving transparency values. Creates a sliced
