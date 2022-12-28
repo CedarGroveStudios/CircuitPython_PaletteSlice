@@ -39,7 +39,7 @@ def print_palette(new_palette):
 
 # Define the display and primary display group
 display = board.DISPLAY
-display.brightness = 0.05
+display.brightness = 0.1
 primary_group = displayio.Group()
 
 # Display the test image and source color palette
@@ -143,7 +143,7 @@ primary_group.append(test_tile)
 
 # Define on-screen label for slice object and palette length
 slice_label = Label(
-    terminalio.FONT, text="PALETTE SLICE TESTER: __getitem__", color=0xFFFFFF
+    terminalio.FONT, text="PALETTE SLICE: __getitem__ TEST", color=0xFFFFFF
 )
 slice_label.anchor_point = (0, 0.5)
 slice_label.anchored_position = (10, 225)
@@ -153,13 +153,17 @@ primary_group.append(slice_label)
 display.show(primary_group)
 print("TEST of default image")
 time.sleep(2)
+slice_label.text = "PALETTE SLICE: source image and palette"
+time.sleep(3)
 
 print("TEST of ulab narray -generated palette")
+slice_label.text = "PALETTE SLICE: ulab narray false colors TEST"
 # Prepare a test narray for the ulab narray test
 # Create a ulab test array
 NUMBER_OF_COLORS = 255
 ulab_narray = np.zeros(NUMBER_OF_COLORS)
 for idx in range(NUMBER_OF_COLORS):
+    # Create a range of pseudorandom color values
     ulab_narray[idx] = int(idx * 255 * 255)
 
 # Instantiate a sliceable palette object from test_palette
@@ -169,7 +173,8 @@ ulab_test_palette = PaletteSlice(test_palette)
 # "Broadside" copy the ulab narray object into the sliceable palette
 ulab_test_palette[:] = ulab_narray[:]
 test_tile.pixel_shader = ulab_test_palette[:]
-time.sleep(2)
+time.sleep(3)
+
 
 while True:
     # Create a random slice object; prohibit step == 0
