@@ -99,7 +99,7 @@ Usage Example
 
     from cedargrove_paletteslice import PaletteSlice
     sliceable_palette = PaletteSlice(source_palette)
-    
+
     # Create a new palette from the sliceable palette
     new_sliced_palette = sliceable_palette[0:124:2]
 
