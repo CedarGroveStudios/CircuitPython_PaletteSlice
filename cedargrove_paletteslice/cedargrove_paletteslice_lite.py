@@ -57,7 +57,6 @@ class PaletteSlice:
         """Returns a new_palette slice from reference_list.
 
         param slice key: The slice object specifying the new palette."""
-
         # Move reference_list slice into working_list
         working_list = self._reference_list[key]
         self._create_new_palette(working_list)
@@ -136,12 +135,17 @@ class PaletteSlice:
 
     def _create_new_palette(self, source_list):
         """Create new_palette from a source list composed of color, transparency tuples."""
-        # Create a clean new_palette
-        self._new_palette = displayio.Palette(len(source_list))
-        # Add contents to new_palette using sliced source_list color and transparency
-        for idx, (color, transparency) in enumerate(source_list):
-            # Add color to new_palette
-            self._new_palette[idx] = color
-            if transparency:
-                # Set new_palette color index transparency
-                self._new_palette.make_transparent(idx)
+        if isinstance(source_list, tuple):
+            self._new_palette = displayio.Palette(1)
+            self._new_palette[0] = source_list[0]
+            if source_list[1]:
+                self._new_palette.make_transparent(0)
+        else:
+            self._new_palette = displayio.Palette(len(source_list))
+            # Add contents to new_palette using sliced source_list color and transparency
+            for idx, (color, transparency) in enumerate(source_list):
+                # Add color to new_palette
+                self._new_palette[idx] = color
+                if transparency:
+                    # Set new_palette color index transparency
+                    self._new_palette.make_transparent(idx)
