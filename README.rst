@@ -122,7 +122,9 @@ Documentation
 PaletteSlice Design Considerations
 ----------------------------------
 
-CircuitPython classes such as PaletteSlice cannot inherit ``displayio.Palette`` or ``list`` attributes because of their specific core implementation. Therefore, PaletteSlice uses composition to appear to be a ``displayio.Palette`` object. The PaletteSlice project began as a learning experience for the author but is also became a proof-of-concept for testing the usefulness of list slicing for ``displayio.Palette`` objects. It is hoped that this project will encourage list slice and extended slice capabilities be added to ``displayio.Palette`` in the CircuitPython core.
+CircuitPython classes such as PaletteSlice cannot inherit ``displayio.Palette`` or ``list`` attributes because of their specific core implementation. Therefore, PaletteSlice uses composition to appear to be a ``displayio.Palette`` object.
+
+The PaletteSlice project began as a learning experience for the author but is also became a proof-of-concept for testing the usefulness of list slicing for ``displayio.Palette`` objects. It is hoped that this project will encourage list slice and extended slice capabilities be added to ``displayio.Palette`` in the CircuitPython core.
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_design_brainstorm.png
     :alt: Brainstorm Diagram
