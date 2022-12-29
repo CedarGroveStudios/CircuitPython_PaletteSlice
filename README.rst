@@ -27,7 +27,11 @@ In addition to a palette property (``.palette``), PaletteSlice contains a list r
 
 The ability to create and manipulate palettes using slicing allows for the use of a standardized palette to be used to provide a color scheme for multiple objects within a project framework, regardless of an object's color depth. For example, a standard color palette of 1024 individual colors could be used for a 64-color bitmap object by slicing the standard palette using an extended slice object:
 
-``object_palette = source_palette[::16]``
+``bitmap_image.pixel_shader = source_palette[::16]``
+
+
+Two Versions -- Minimal and Acme
+--------------------------------
 
 Two versions of PaletteSlice are available. ``cedargrove_paletteslice.paletteslice`` is a minimal version that only supports palette slicing and the traditional palette functions:
 
@@ -56,8 +60,6 @@ and perhaps the extended functions of:
 
 * ``min(palette)``
 * ``max(palette)``
-
-CircuitPython classes such as PaletteSlice cannot inherit ``displayio.Palette`` or ``list`` attributes because of their specific core implementation. Therefore, PaletteSlice uses composition to appear to be a ``displayio.Palette`` object. The PaletteSlice project began as a learning experience for the author but is also became a proof-of-concept for testing the usefulness of list slicing for ``displayio.Palette`` objects. It is hoped that this project will encourage list slice and extended slice capabilities be added to ``displayio.Palette`` in the CircuitPython core.
 
 Dependencies
 =============
@@ -117,7 +119,12 @@ Documentation
 =============
 `PaletteSlice API Documentation <https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/pseudo_rtd_cedargrove_paletteslice.pdf>`_
 
-PaletteSlide Design Considerations:
+PaletteSlice Design Considerations
+----------------------------------
+
+CircuitPython classes such as PaletteSlice cannot inherit ``displayio.Palette`` or ``list`` attributes because of their specific core implementation. Therefore, PaletteSlice uses composition to appear to be a ``displayio.Palette`` object.
+
+The PaletteSlice project began as a learning experience for the author but is also became a proof-of-concept for testing the usefulness of list slicing for ``displayio.Palette`` objects. It is hoped that this project will encourage list slice and extended slice capabilities be added to ``displayio.Palette`` in the CircuitPython core.
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_design_brainstorm.png
     :alt: Brainstorm Diagram
