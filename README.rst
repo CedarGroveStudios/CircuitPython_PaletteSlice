@@ -107,7 +107,7 @@ Usage Example
 
 Documentation
 =============
-API documentation for this library can be found on `Read the Docs <https://circuitpython-paletteslice.readthedocs.io/>`_.
+`PaletteSlice API Documentation <https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/pseudo_rtd_cedargrove_paletteslice.pdf>`
 
 For information on building library documentation, please check out
 `this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
