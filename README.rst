@@ -21,6 +21,10 @@ CedarGroveStudios/CircuitPython_PaletteSlice
 
 A CircuitPython wrapper class to add list slice and extended slice capability to a ``displayio.Palette`` object while preserving transparency.
 
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/display_capture_composite.png
+    :alt: Using slice with narray Pseudocolor Palettes
+    :width: 600pt
+
 Two versions are available for testing. ``cedargrove_paletteslice.paletteslice`` is a minimal version that only supports palette slicing and the traditional palette functions:
 
 * ``len(palette)``
