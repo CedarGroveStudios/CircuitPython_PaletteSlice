@@ -119,6 +119,18 @@ Documentation
 =============
 `PaletteSlice API Documentation <https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/pseudo_rtd_cedargrove_paletteslice.pdf>`_
 
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_class_desc_minimal.png
+    :alt: Brainstorm Diagram
+    :width: 600pt
+
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_class_desc_acme.png
+    :alt: Brainstorm Diagram
+    :width: 600pt
+
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_class_internals.png
+    :alt: Brainstorm Diagram
+    :width: 600pt
+
 PaletteSlice Design Considerations
 ----------------------------------
 
