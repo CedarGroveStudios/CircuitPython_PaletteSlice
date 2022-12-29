@@ -19,22 +19,26 @@ CedarGroveStudios/CircuitPython_PaletteSlice
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A CircuitPython wrapper class to add list slice and extended slice capability to a ``displayio.Palette`` object while preserving transparency.
+*A CircuitPython wrapper class to add list slice and extended slice capability to a ``displayio.Palette`` object while preserving transparency.*
 
-.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/display_capture_composite.png
-    :alt: Using slice with narray Pseudocolor Palettes
-    :width: 600pt
+The default functionality of a ``displayio.Palette`` object is similar to a Python list object, but very limited. For example, the integer value of color elements of the palette can be modified but only one element can be changed at a time. The PaletteSlice wrapper class provides the ability to use a slice object to specify a subset of a palette to change or to create a new palette from a source palette. Both slice and extended slice objects are supported.
 
-Two versions are available for testing. ``cedargrove_paletteslice.paletteslice`` is a minimal version that only supports palette slicing and the traditional palette functions:
+In addition to a palette property (``.palette``), PaletteSlice contains a list representation (``.reference_list``) of the source palette with color and transparency values stored as a tuple.
 
-* ``len(palette)``
+The ability to create and manipulate palettes using slicing allows for the use of a standardized palette to be used to provide a color scheme for multiple objects within a project framework, regardless of an object's color depth. For example, a standard color palette of 1024 individual colors could be used for a 64-color bitmap object by slicing the standard palette using an extended slice object:
+
+``object_palette = source_palette[::16]``
+
+Two versions of PaletteSlice are available. ``cedargrove_paletteslice.paletteslice`` is a minimal version that only supports palette slicing and the traditional palette functions:
+
+* ``.is_transparent(index)``
 * ``.make_transparent(index)``
 * ``.make_opaque(index)``
-* ``.is_transparent(index)``
+* ``len(palette)``
 
 The second version, ``cedargrove_paletteslice.paletteslice_acme`` currently extends the functionality of the minimal version with the additional functions:
 
-* ``__contains__(color)``
+* ``__contains__(color)``  (usage: ``color in PaletteSlice.palette`` )
 * ``.append(color)``
 * ``.count(color)``
 * ``.index(color)``
@@ -53,13 +57,7 @@ and perhaps the extended functions of:
 * ``min(palette)``
 * ``max(palette)``
 
-CircuitPython classes such as PaletteSlice cannot inherit ``displayio.Palette`` or ``list`` attributes because of their specific core implementation. Therefore, PaletteSlice uses composition to appear to be a ``displayio.Palette`` object. The PaletteSlice project began as a learning experience for the author but is also became a proof-of-concept for testing the usefulness of list slicing for ``displayio.Palette`` objects. Hopefully the project will encourage list slice and extended slice capabilities be added to ``displayio.Palette`` in the CircuitPython core.
-
-.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_design_brainstorm.png
-    :alt: Brainstorm Diagram
-    :width: 600pt
-
-PaletteSlide Design Considerations
+CircuitPython classes such as PaletteSlice cannot inherit ``displayio.Palette`` or ``list`` attributes because of their specific core implementation. Therefore, PaletteSlice uses composition to appear to be a ``displayio.Palette`` object. The PaletteSlice project began as a learning experience for the author but is also became a proof-of-concept for testing the usefulness of list slicing for ``displayio.Palette`` objects. It is hoped that this project will encourage list slice and extended slice capabilities be added to ``displayio.Palette`` in the CircuitPython core.
 
 Dependencies
 =============
@@ -109,9 +107,21 @@ Usage Example
 
 ``paletteslice_simpletest.py`` and ``paletteslice_simpletest_acme.py`` are contained in the ``examples`` folder.
 
+Using slice with narray Pseudocolor Palettes:
+
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/display_capture_composite.png
+    :alt: Using slice with narray Pseudocolor Palettes
+    :width: 600pt
+
 Documentation
 =============
 `PaletteSlice API Documentation <https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/pseudo_rtd_cedargrove_paletteslice.pdf>`_
+
+PaletteSlide Design Considerations:
+
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/PaletteSlice_design_brainstorm.png
+    :alt: Brainstorm Diagram
+    :width: 600pt
 
 For information on building library documentation, please check out
 `this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
