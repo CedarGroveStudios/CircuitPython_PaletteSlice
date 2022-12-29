@@ -15,8 +15,8 @@ import displayio
 from ulab import numpy as np
 import adafruit_imageload
 from adafruit_display_text.label import Label
-from cedargrove_paletteslice.paletteslice import PaletteSlice
 from cedargrove_rgb_spectrumtools import visible
+from cedargrove_paletteslice.paletteslice import PaletteSlice
 
 BKG_IMAGE_FILE = "orchid.bmp"
 NUMBER_OF_COLORS = 255  # narray size
