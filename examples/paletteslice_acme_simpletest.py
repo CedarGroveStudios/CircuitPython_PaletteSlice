@@ -1,9 +1,9 @@
 # SPDX-FileCopyrightText: Copyright (c) 2022 JG for Cedar Grove Maker Studios
 # SPDX-License-Identifier: MIT
 """
-`paletteslice_simpletest_acme`
+`paletteslice_acme_simpletest`
 ================================================================================
-A test of the PaletteSlice Acme wrapper class.
+A test of the PaletteSlice wrapper class, Acme version.
 
 * Author(s): JG
 """
@@ -13,19 +13,12 @@ import random
 import board
 import terminalio
 import displayio
-from ulab import numpy as np
 import adafruit_imageload
 from adafruit_display_text.label import Label
 from cedargrove_paletteslice.paletteslice_acme import PaletteSlice
 
 BKG_IMAGE_FILE = "orchid.bmp"
-
-
-def print_list(new_list):
-    print("print_list object:", new_list)
-    print("print_list object length:", len(new_list))
-    for i, (color, transparency) in enumerate(new_list):
-        print(f"index: {i:03.0f} color: {color:#08x} transparency: {transparency}")
+FRAME_DURATION = 1  # seconds
 
 
 def print_palette(new_palette):
@@ -142,40 +135,19 @@ test_tile = displayio.TileGrid(test_bitmap, pixel_shader=test_palette_source)
 primary_group.append(test_tile)
 
 # Define on-screen label for slice object and palette length
-slice_label = Label(
-    terminalio.FONT, text="PALETTE SLICE: __getitem__ TEST", color=0xFFFFFF
-)
+slice_label = Label(terminalio.FONT, text="", color=0xFFFFFF)
 slice_label.anchor_point = (0, 0.5)
 slice_label.anchored_position = (10, 225)
 primary_group.append(slice_label)
 
 # Show the test image and label
 display.show(primary_group)
-print("TEST of default image")
-time.sleep(2)
+print("TEST of source image")
 slice_label.text = "PALETTE SLICE: source image and palette"
-time.sleep(3)
+time.sleep(2)
 
-print("TEST of ulab narray -generated palette")
-slice_label.text = "PALETTE SLICE: ulab narray false colors TEST"
-# Prepare a test narray for the ulab narray test
-# Create a ulab test array
-NUMBER_OF_COLORS = 255
-ulab_narray = np.zeros(NUMBER_OF_COLORS)
-for idx in range(NUMBER_OF_COLORS):
-    # Create a range of pseudorandom color values
-    ulab_narray[idx] = int(idx * 255 * 255)
-
-# Instantiate a sliceable palette object from test_palette
-test_palette = displayio.Palette(NUMBER_OF_COLORS)
-ulab_test_palette = PaletteSlice(test_palette)
-
-# "Broadside" copy the ulab narray object into the sliceable palette
-ulab_test_palette[:] = ulab_narray[:]
-test_tile.pixel_shader = ulab_test_palette[:]
-time.sleep(3)
-
-
+# Continuous random slice test
+print("TEST of random slices")
 while True:
     # Create a random slice object; prohibit step == 0
     start = random.randrange(0, 255)
@@ -190,8 +162,4 @@ while True:
     if len(pal_sliceable.palette) != 0:
         # Display slice object and pause to view
         slice_label.text = f"[{start}:{stop}:{step}]  \nLENGTH={len(pal_sliceable)}"
-        time.sleep(0.75)
-
-print("\nfin\n")
-while True:
-    time.sleep(0.1)
+        time.sleep(FRAME_DURATION)
