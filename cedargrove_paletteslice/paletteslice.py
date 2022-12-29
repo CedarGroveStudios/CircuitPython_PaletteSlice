@@ -31,9 +31,10 @@ class PaletteSlice:
 
     def __init__(self, source_palette):
         """Instantiate the palette slice class. Creates a reference list and a
-        displayio.Palette object with source palette color values. Transparency is preserved.
+        displayio.Palette object with source palette color values.
+        Transparency is preserved.
 
-        param displayio.Palette source_palette: The source displayio palette object."""
+        param displayio.Palette source_palette: The source displayio.Palette object."""
         self._source_palette = source_palette
 
         # Create a clean new_palette
@@ -85,9 +86,9 @@ class PaletteSlice:
 
     def __delitem__(self, key):
         """UNTESTED:
-        Delete a slice from the primary class displayio.Palette. Permanently removes
-        the slice from reference_list and creates a new_palette.
-        Usage is del PaletteSlice[key]. ONLY WORKS IN REPL
+        Delete a slice from the primary class displayio.Palette. Permanently modifies
+        reference_list and palette.
+        Usage is ``del PaletteSlice[key]``. ONLY WORKS IN REPL
 
         param slice key: The target slice object to delete from the new color palette."""
         """self._reference_list = del self._reference_list[key]
@@ -100,17 +101,17 @@ class PaletteSlice:
 
     @property
     def palette(self):
-        """The primary class palette (adjusted displayio.Palette object)."""
+        """The primary class palette (an adjusted displayio.Palette object)."""
         return self._new_palette
 
     @property
     def reference_list(self):
-        """A list of color, transparency tuples from the primary class palette."""
+        """A list of color-transparency tuples from the primary class palette."""
         return self._reference_list
 
     def is_transparent(self, index):
         """Returns True if the palette index is transparent. Returns False if opaque.
-        Usage: PaletteSlice.is_transparend(index)
+        Usage is ``PaletteSlice.is_transparent(index)``.
 
         param int index: The palette color index to test."""
         return self._reference_list[index][1]
@@ -118,7 +119,7 @@ class PaletteSlice:
     def make_transparent(self, index):
         """Set a palette index to transparency. Permanently modifies reference_list
         and new_palette.
-        Usage: PaletteSlice.make_opaque(index)
+        Usage is ``PaletteSlice.make_opaque(index)``.
 
         param int index: The palette color index to be made transparent."""
         self._reference_list[index] = (self._reference_list[index][0], True)
@@ -127,14 +128,14 @@ class PaletteSlice:
     def make_opaque(self, index):
         """Set a palette index to opaque. Permanently modifies reference_list
         and new_palette.
-        Usage: PaletteSlice.make_opaque(index)
+        Usage is ``PaletteSlice.make_opaque(index)``.
 
         param int index: The palette color index to be made opaque."""
         self._reference_list[index] = (self._reference_list[index][0], False)
         self._create_new_palette(self._reference_list)
 
     def _create_new_palette(self, source_list):
-        """Create new_palette from a source list composed of color, transparency tuples."""
+        """Create new_palette from a source list composed of color-transparency tuples."""
         if isinstance(source_list, tuple):
             self._new_palette = displayio.Palette(1)
             self._new_palette[0] = source_list[0]
