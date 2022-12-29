@@ -27,7 +27,7 @@ In addition to a palette property (``.palette``), PaletteSlice contains a list r
 
 The ability to create and manipulate palettes using slicing allows for the use of a standardized palette to be used to provide a color scheme for multiple objects within a project framework, regardless of an object's color depth. For example, a standard color palette of 1024 individual colors could be used for a 64-color bitmap object by slicing the standard palette using an extended slice object:
 
-``object_palette = source_palette[::16]``
+``bitmap_image.pixel_shader = source_palette[::16]``
 
 
 Two Versions -- Minimal and Acme
