@@ -107,7 +107,7 @@ Usage Example
     # Create a new palette from the sliceable palette
     new_sliced_palette = sliceable_palette[0:124:2]
 
-``paletteslice_simpletest.py`` and ``paletteslice_simpletest_acme.py`` are contained in the ``examples`` folder.
+``paletteslice_simpletest.py``, ``paletteslice_acme_simpletest.py``, and ``paletteslice_ulab_test.py`` are contained in the ``examples`` folder.
 
 Using slice with narray Pseudocolor Palettes:
 
