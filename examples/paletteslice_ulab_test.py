@@ -71,7 +71,8 @@ while True:
     time.sleep(FRAME_DURATION)
 
     # Show the ulab image and label
+    #  Use slicing to limit the palette size to 256 colors
     # print("TEST of ulab narray pseudocolor palette")
-    test_tile.pixel_shader = ulab_test_palette[:]
+    test_tile.pixel_shader = ulab_test_palette[::2]
     slice_label.text = "PALETTE SLICE: ulab narray pseudocolor TEST"
     time.sleep(FRAME_DURATION)
