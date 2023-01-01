@@ -123,13 +123,13 @@ Usage Example
     # Create a new palette from the sliceable palette
     new_sliced_palette = sliceable_palette[0:124:2]
 
-``paletteslice_simpletest.py``, ``paletteslice_acme_simpletest.py``, and ``paletteslice_ulab_test.py`` are contained in the ``examples`` folder.
-
 Using slice with narray Pseudocolor Palettes:
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/display_capture_composite.png
     :alt: Using slice with narray Pseudocolor Palettes
     :width: 600pt
+
+``paletteslice_simpletest.py``, ``paletteslice_acme_simpletest.py``, and ``paletteslice_ulab_test.py`` are contained in the ``examples`` folder.
 
 Documentation
 =============
