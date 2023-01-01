@@ -29,6 +29,22 @@ The ability to create and manipulate palettes using slicing allows for the use o
 
 ``bitmap_image.pixel_shader = source_palette[::16]``
 
+======
+
+Note that a PaletteSlice object behaves correctly only when a slice object is included in the syntax. For example,
+
+``bitmap_image.pixel_shader = source_palette``
+
+will cause a type error:
+
+``TypeError: pixel_shader must be displayio.Palette or displayio.ColorConverter``
+
+At a minimum, the PaletteSlice object must include the "all" slice object in order to return a displayio.Palette object:
+
+``bitmap_image.pixel_shader = source_palette[:]``
+
+======
+
 
 Two Versions -- Minimal and Acme
 --------------------------------
