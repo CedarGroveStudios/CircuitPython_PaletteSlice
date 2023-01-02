@@ -76,6 +76,7 @@ and perhaps the extended functions of:
 
 * ``min(palette)``
 * ``max(palette)``
+* ``enumerate(palette)``
 
 Dependencies
 =============
