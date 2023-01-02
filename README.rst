@@ -19,7 +19,7 @@ CedarGroveStudios/CircuitPython_PaletteSlice
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-*A CircuitPython wrapper class to add list slice and extended slice capability to a ``displayio.Palette`` object while preserving transparency.*
+*A CircuitPython wrapper class to add list slice and extended slice capability to a displayio.Palette object while preserving transparency.*
 
 The default functionality of a ``displayio.Palette`` object is similar to a Python list object, but very limited. For example, the integer value of color elements of the palette can be modified but only one element can be changed at a time. The PaletteSlice wrapper class provides the ability to use a slice object to specify a subset of a palette to change or to create a new palette from a source palette. Both slice and extended slice objects are supported.
 
