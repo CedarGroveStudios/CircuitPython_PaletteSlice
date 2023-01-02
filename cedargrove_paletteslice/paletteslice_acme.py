@@ -84,18 +84,6 @@ class PaletteSlice:
         self._reference_list[key] = working_list
         self._create_new_palette(self._reference_list)
 
-    def __delitem__(self, key):
-        """UNTESTED:
-        Delete a slice from the primary class displayio.Palette. Permanently modifies
-        reference_list and palette.
-        Usage is ``del PaletteSlice[key]``. ONLY WORKS IN REPL
-
-        param slice key: The target slice object to delete from the new color palette."""
-        """self._reference_list = del self._reference_list[key]
-        self._create_new_palette(self._reference_list)"""
-        # pylint: disable = (unnecessary-pass)
-        pass
-
     def __contains__(self, color):
         """Determine if reference_list contains the singleton color. Returns True or False.
         Usage is ``color in PaletteSlice.palette``.
@@ -152,8 +140,7 @@ class PaletteSlice:
         self._create_new_palette(self._reference_list)
 
     def insert(self, key, color):
-        """UNTESTED:
-        Insert an opaque color value into the primary class palette at
+        """Insert an opaque color value into the primary class palette at
         slice object key. Permanently modifies reference_list and palette.
         Usage is ``PaletteSlice.insert(key, color)``.
 
