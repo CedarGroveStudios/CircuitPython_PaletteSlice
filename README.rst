@@ -19,7 +19,7 @@ CedarGroveStudios/CircuitPython_PaletteSlice
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-*A CircuitPython wrapper class to add list slice and extended slice capability to a ``displayio.Palette`` object while preserving transparency.*
+*A CircuitPython wrapper class to add list slice and extended slice capability to a displayio.Palette object while preserving transparency.*
 
 The default functionality of a ``displayio.Palette`` object is similar to a Python list object, but very limited. For example, the integer value of color elements of the palette can be modified but only one element can be changed at a time. The PaletteSlice wrapper class provides the ability to use a slice object to specify a subset of a palette to change or to create a new palette from a source palette. Both slice and extended slice objects are supported.
 
@@ -123,13 +123,13 @@ Usage Example
     # Create a new palette from the sliceable palette
     new_sliced_palette = sliceable_palette[0:124:2]
 
-``paletteslice_simpletest.py``, ``paletteslice_acme_simpletest.py``, and ``paletteslice_ulab_test.py`` are contained in the ``examples`` folder.
-
 Using slice with narray Pseudocolor Palettes:
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice/blob/main/media/display_capture_composite.png
     :alt: Using slice with narray Pseudocolor Palettes
     :width: 600pt
+
+``paletteslice_simpletest.py``, ``paletteslice_acme_simpletest.py``, and ``paletteslice_ulab_test.py`` are contained in the ``examples`` folder.
 
 Documentation
 =============
