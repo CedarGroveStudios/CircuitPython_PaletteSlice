@@ -62,12 +62,12 @@ The second version, ``cedargrove_paletteslice.paletteslice_acme`` currently exte
 * ``.append(color)``
 * ``.count(color)``
 * ``.index(color)``
+* ``.insert(key)``
 * ``.pop(key)``
 
 Under consideration for a future "acme" version are:
 
 * ``.entend(new_palette)``
-* ``.insert(key)``
 * ``.remove(color)``
 * ``.reverse()``
 * ``.sort(key, reverse)``
