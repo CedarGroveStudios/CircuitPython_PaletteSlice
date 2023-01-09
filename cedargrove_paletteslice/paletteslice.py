@@ -1,9 +1,9 @@
 # SPDX-FileCopyrightText: Copyright (c) 2022 JG for Cedar Grove Maker Studios
 # SPDX-License-Identifier: MIT
 """
-`paletteslice_lite`
+`paletteslice`
 ================================================================================
-PaletteSlice (lite) is a CircuitPython wrapper class to add list slice capability to a
+PaletteSlice is a CircuitPython wrapper class to add list slice capability to a
 displayio.Palette object while preserving transparency values. Creates a sliced
 displayio.Palette object.
 
@@ -83,18 +83,6 @@ class PaletteSlice:
         # Move working_list into the specified reference_list slice
         self._reference_list[key] = working_list
         self._create_new_palette(self._reference_list)
-
-    def __delitem__(self, key):
-        """UNTESTED:
-        Delete a slice from the primary class displayio.Palette. Permanently modifies
-        reference_list and palette.
-        Usage is ``del PaletteSlice[key]``. ONLY WORKS IN REPL
-
-        param slice key: The target slice object to delete from the new color palette."""
-        """self._reference_list = del self._reference_list[key]
-        self._create_new_palette(self._reference_list)"""
-        # pylint: disable = (unnecessary-pass)
-        pass
 
     def __len__(self):
         return len(self._new_palette)
