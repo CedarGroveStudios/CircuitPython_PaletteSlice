@@ -25,6 +25,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/CedarGroveStudios/CircuitPython_PaletteSlice.git"
 
 
+# pylint: disable = duplicate-code
 class PaletteSlice:
     """A CircuitPython wrapper class to add list slice capability to a displayio.Palette
     object while preserving transparency values."""
