@@ -27,7 +27,7 @@ display = board.DISPLAY
 display.brightness = 0.005
 
 primary_group = displayio.Group()
-display.show(primary_group)
+display.root_group = primary_group
 
 # Create Red/Yellow/Green light-style spectrum
 spectrum_1 = Spectrum([0xFF0000, 0xFFFF00, 0x00FF00], mode="continuous", gamma=0.6)

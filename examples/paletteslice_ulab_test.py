@@ -58,13 +58,12 @@ slice_label.anchored_position = (10, 225)
 primary_group.append(slice_label)
 
 # Display the primary group
-display.show(primary_group)
+display.root_group = primary_group
 
 # pylint: disable=no-member
 print(f"memory free: {gc.mem_free()} bytes")
 
 while True:
-
     # Show the source image and label
     # print("TEST of source image and palette")
     test_tile.pixel_shader = test_palette_source

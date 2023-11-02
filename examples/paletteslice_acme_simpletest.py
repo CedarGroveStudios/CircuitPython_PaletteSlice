@@ -167,7 +167,7 @@ slice_label.anchored_position = (10, 225)
 primary_group.append(slice_label)
 
 # Show the test image and label
-display.show(primary_group)
+display.root_group = primary_group
 print("\n" + ("=" * 15))
 print("TEST of source image")
 slice_label.text = "PALETTE SLICE: source image and palette"
